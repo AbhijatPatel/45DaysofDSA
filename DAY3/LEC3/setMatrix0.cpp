@@ -31,48 +31,67 @@ using namespace std;
 //     }
 //   }
 // }
+//T.C = (n*m)*(n+m)+(n*m)
+
+//better
+
+// void setMatrix0(vector<vector<int>> &arr, int n, int m) {
+//     vector<int> row(n, 0);
+//     vector<int> col(m, 0);
+
+//     for(int i=0;i<n;i++){
+//         for(int j=0;j<m;j++){
+//             if(arr[i][j]==0){
+//                 row[i]=1;
+//                 col[j]=1;
+//             }
+//         }
+//     }
+//     for(int i=0;i<n;i++){
+//         for(int j=0;j<m;j++){
+//             if(row[i] || col[j]){
+//                 arr[i][j]=0;
+//             }
+//         }
+//     }
+// }
+// T.C = (n*m) , S.C = (n+m)
 
 //optimized
 
-void setMatrix0(vector<vector<int>> &arr, int n, int m) {
-
+void setMatrix0(vector<vector<int>> & arr, int n, int m){
     int col0 = 1;
-
-    for(int i = 0; i < n; i++) {
-
+    
+    for(int i = 0;i<n;i++){
         if(arr[i][0] == 0)
-            col0 = 0;
+        col0 = 0;
 
-        for(int j = 1; j < m; j++) {
-
-            if(arr[i][j] == 0) {
+        for(int j = 1;j<m;j++){
+            if(arr[i][j] == 0){
                 arr[i][0] = 0;
                 arr[0][j] = 0;
             }
         }
     }
-
-    for(int i = 1; i < n; i++) {
-        for(int j = 1; j < m; j++) {
-
-            if(arr[i][0] == 0 || arr[0][j] == 0) {
-                arr[i][j] = 0;
-            }
+    for(int i=1;i<n;i++){
+        for(int j=0;j<m;j++){
+            if(arr[i][0] == 0 || arr[0][j] == 0)
+            arr[i][j] = 0;
         }
     }
-
+    if(arr[0][0] == 0){
+        for(int j=0;j<m;j++)
+        arr[0][j]=0;
+    }
     if(arr[0][0] == 0) {
-        for(int j = 0; j < m; j++) {
+        for(int j = 0; j < m; j++)
             arr[0][j] = 0;
-        }
     }
-
     if(col0 == 0) {
-        for(int i = 0; i < n; i++) {
+        for(int i = 0; i < n; i++)
             arr[i][0] = 0;
         }
-    }
-}
+    } 
 
 int main() {
     vector<vector<int>> arr = {
