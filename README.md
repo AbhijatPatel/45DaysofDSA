@@ -1,4 +1,4 @@
-45-Day DSA Challenge 🚀
+#45-Day DSA Challenge 🚀
 
 Welcome to my 45-Day Data Structures & Algorithms (DSA) Challenge! This challenge is designed to build strong problem-solving skills, master core DSA concepts, and prepare for coding interviews and campus placements.
 
