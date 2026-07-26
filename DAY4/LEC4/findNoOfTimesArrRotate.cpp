@@ -12,7 +12,7 @@ int noOfTimesArrRotate(vector<int> &arr, int n)
     {
         int mid = (low + high) / 2;
 
-        // Left half is sorted
+    
         if (arr[low] <= arr[mid])
         {
             if (arr[low] < minElm)
