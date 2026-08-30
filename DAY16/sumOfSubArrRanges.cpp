@@ -44,10 +44,10 @@ long long sumSubArrayRanges(vector<int>& nums) {
 
             // left[i] = st.empty() ? -1 : st.top();
             if (st.empty()) {
-                right[i] = n;
+                left[i] = -1;
             }
             else {
-                right[i] = st.top();
+                left[i] = st.top();
             }
             st.push(i);
         }
