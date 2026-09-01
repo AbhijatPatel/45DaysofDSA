@@ -52,25 +52,55 @@ using namespace std;
 
 //Sliding Window + Frequency Array
 
+// int lengthOfLongestSubstring(string s) {
+//     int freq[256] = {0};
+
+//     int left = 0;
+//     int ans = 0;
+
+//     for (int right = 0; right < s.size(); right++) {
+
+//         freq[s[right]]++;
+
+//         while (freq[s[right]] > 1) {
+//             freq[s[left]]--;
+//             left++;
+//         }
+
+//         ans = max(ans, right - left + 1);
+//     }
+
+//     return ans;
+// }
+
 int lengthOfLongestSubstring(string s) {
-    int freq[256] = {0};
+    int hash[256] ;
+fill(hash, hash + 256, -1);
 
-    int left = 0;
-    int ans = 0;
+    int l = 0;
+    int r = 0;
+    int maxLen = 0;
 
-    for (int right = 0; right < s.size(); right++) {
+    int n = s.size();
 
-        freq[s[right]]++;
+    while (r < n) {
 
-        while (freq[s[right]] > 1) {
-            freq[s[left]]--;
-            left++;
+        if (hash[s[r]] != -1) {
+            if (hash[s[r]] >= l) {
+                l = hash[s[r]] + 1;
+            }
         }
 
-        ans = max(ans, right - left + 1);
+        int len = r - l + 1;
+
+        maxLen = max(maxLen, len);
+
+        hash[s[r]] = r;
+
+        r++;
     }
 
-    return ans;
+    return maxLen;
 }
 
 int main() {
