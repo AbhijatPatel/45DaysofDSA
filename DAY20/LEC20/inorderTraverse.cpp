@@ -12,41 +12,68 @@ struct TreeNode {
         right = nullptr;
     }
 };
+// Inorder Traversal
 
-class Solution {
-public:
+    // vector<int> inorderTraversal(TreeNode* root) {
+    //     vector<int> ans;
+    //     stack<TreeNode*> st;
+
+    //     TreeNode* current = root;
+
+    //     while (current != NULL || !st.empty()) {
+    //         while (current != NULL) {
+    //             st.push(current);
+    //             current = current->left;
+    //         }
+
+    //         current = st.top();
+    //         st.pop();
+
+    //         ans.push_back(current->val);
+
+    //         current = current->right;
+    //     }
+
+    //     return ans;
+    // }
+
+    // Iterative Inorder Traversal
     vector<int> inorderTraversal(TreeNode* root) {
         vector<int> ans;
         stack<TreeNode*> st;
+        TreeNode* node = root;
 
-        TreeNode* current = root;
-
-        while (current != NULL || !st.empty()) {
-            while (current != NULL) {
-                st.push(current);
-                current = current->left;
-            }
-
-            current = st.top();
-            st.pop();
-
-            ans.push_back(current->val);
-
-            current = current->right;
+        while(true){
+            if(node != NULL){
+         st.push(node);
+        node = node->left; 
         }
 
-        return ans;
+        else{
+            if(st.empty() == true)
+            break;
+
+            node = st.top();
+            st.pop();
+
+            ans.push_back(node->val);
+            node = node->right;
+        }
     }
-};
+    return ans;
+}
 
 int main() {
-    TreeNode* root = new TreeNode(1);
-    root->right = new TreeNode(2);
-    root->right->left = new TreeNode(3);
 
-    Solution obj;
+     TreeNode* root = new TreeNode(1);
 
-    vector<int> result = obj.inorderTraversal(root);
+    root->left = new TreeNode(2);
+    root->right = new TreeNode(3);
+
+    root->left->left = new TreeNode(4);
+    root->left->right = new TreeNode(5);
+    
+    vector<int> result = inorderTraversal(root);
 
     for (int x : result) {
         cout << x << " ";
