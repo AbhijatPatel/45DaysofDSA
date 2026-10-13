@@ -1,3 +1,4 @@
+
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -8,8 +9,8 @@ struct TreeNode {
 
     TreeNode(int x) {
         val = x;
-        left = NULL;
-        right = NULL;
+        left = nullptr;
+        right = nullptr;
     }
 };
 
@@ -21,9 +22,8 @@ public:
         return maxi;
     }
 
-private:
     int maxPathDown(TreeNode* node, int& maxi) {
-        if (node == NULL)
+        if (node == nullptr)
             return 0;
 
         int left = max(0, maxPathDown(node->left, maxi));
@@ -40,15 +40,13 @@ int main() {
 
     root->left = new TreeNode(9);
     root->right = new TreeNode(20);
-
     root->right->left = new TreeNode(15);
     root->right->right = new TreeNode(7);
 
     Solution obj;
 
     cout << "Maximum Path Sum: "
-         << obj.maxPathSum(root)
-         << endl;
+         << obj.maxPathSum(root) << endl;
 
     return 0;
 }
